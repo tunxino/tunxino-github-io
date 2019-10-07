@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .form-control {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="value-classname" class="form-control">
+            <option value="">---Classname---</option>
+            <option value="Angular">Angular</option>
+            <option value=".Net">.Net</option>
+            <option value="Java">Java</option>
+            <option value="Test">Test</option>
+        </select>
+    <table id="list-data-subject">
+
+    </table>
+
+    <select id="value-name" class="form-control">
+            <option>--Name--</option>
+        </select>
+    <script>
+        var students = [{
+            id: 1,
+            name: 'trần văn a',
+            className: '.Net'
+        }, {
+            id: 2,
+            name: 'trần văn b',
+            className: '.Net'
+        }, {
+            id: 3,
+            name: 'trần văn c',
+            className: 'Angular'
+        }, {
+            id: 4,
+            name: 'trần văn d',
+            className: 'Angular'
+        }, {
+            id: 5,
+            name: 'trần văn e',
+            className: 'Java'
+        }, {
+            id: 6,
+            name: 'trần văn f',
+            className: 'Java'
+        }, {
+            id: 7,
+            name: 'trần văn e',
+            className: 'Java'
+        }, {
+            id: 8,
+            name: 'trần văn f',
+            className: 'Test'
+        }, {
+            id: 9,
+            name: 'trần văn g',
+            className: 'Test'
+        }, {
+            id: 10,
+            name: 'trần văn h',
+            className: 'Test'
+        }]
+
+
+        var selectValue = document.getElementById("value-classname");
+        selectValue.addEventListener('click', filter)
+
+        function filter() {
+            console.log(selectValue.value)
+            var filterStudent = students.filter(function(item) {
+                return selectValue.value === item.className;
+            });
+            render(filterStudent)
+
+        };
+
+        function render(students) {
+            var tableList = document.getElementById("value-name");
+            var student = students.map((item) => {
+                return '<option>' + item.name + '</option>';
+            });
+            console.log(student);
+            tableList.innerHTML = student.join();
+        }
+        render(students);
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
